@@ -18,7 +18,7 @@
 	* StdStats.plotBars does most the work for you.
 
 ## Deliverables
-markup : * The source code for Runsort in a file called Runsort.java. Make sure it's perfect, following the book's conventions for clarity, brevity, indentation, variable names, comments, etc.
-	 * The source code for your extension, in a file called FancyRunsort.java.
-	 * A brief report in PDF, telling us if the code seems to sort, what you've tested it on, and a brief description of your extension. You may use the report skeleton on the next page.
-	 * Any input files that gave your sorting algorithm trouble.
+* The source code for Runsort in a file called Runsort.java. Make sure it's perfect, following the book's conventions for clarity, brevity, indentation, variable names, comments, etc.
+	* The source code for your extension, in a file called FancyRunsort.java.
+	* A brief report in PDF, telling us if the code seems to sort, what you've tested it on, and a brief description of your extension. You may use the report skeleton on the next page.
+	* Any input files that gave your sorting algorithm trouble.
