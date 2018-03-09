@@ -6,9 +6,37 @@ class Runsort {
     int N = a.length;
     aux = new Comparable[N];
     for (int sz = 1; sz < N; sz = sz+sz)
-      for (int lo = 0; lo < N-sz; lo += sz+sz) 
+      for (int lo = 0; lo < N-sz; lo += sz+sz)
         merge(a, lo, lo+sz-1, Math.min(lo+sz+sz-1, N-1));
 }
+
+  public static void runSort(Comparable[] a) {
+    int n = a.length-1;
+    int sizeOfLastSubArray = 0;
+    int i, lo, mid;
+    lo = 0;
+    aux = new Comparable[n+1];
+    int runCounter = 0;
+    while(sizeOfLastSubArray < n) {
+      // update n
+      i = 0;
+      int mergeCounter = 0;
+      mid = 0;
+      while(true) {
+        lo = i;
+        if (i >= n) break;
+        while ((i < n) && !less(a[i+1], a[i])) i++;
+        mid = i;
+        if (mid == n) break;
+        i++;
+        while ((i < n) && !less(a[i+1], a[i])) i++;
+        merge (a, lo, mid, i);
+        if (i < n) i++;
+      }
+      runCounter++;
+      sizeOfLastSubArray = n - lo;
+    }
+  }
 
 
   private static void merge(Comparable[] a, int lo, int mid, int hi) {
