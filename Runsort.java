@@ -3,39 +3,33 @@ class Runsort {
   private static Comparable[] aux;
 
   public static void sort(Comparable[] a) {
-    int N = a.length;
-    aux = new Comparable[N];
-    for (int sz = 1; sz < N; sz = sz+sz)
-      for (int lo = 0; lo < N-sz; lo += sz+sz)
-        merge(a, lo, lo+sz-1, Math.min(lo+sz+sz-1, N-1));
-}
-
-  public static void runSort(Comparable[] a) {
     int n = a.length-1;
     int sizeOfLastSubArray = 0;
     int i, lo, mid;
     lo = 0;
     aux = new Comparable[n+1];
-    int runCounter = 0;
-    while(sizeOfLastSubArray < n) {
-      // update n
+    while(true) {
       i = 0;
-      int mergeCounter = 0;
       mid = 0;
       while(true) {
         lo = i;
-        if (i >= n) break;
         while ((i < n) && !less(a[i+1], a[i])) i++;
         mid = i;
-        if (mid == n) break;
-        i++;
+        if (i < n) i++;
+        else break;
         while ((i < n) && !less(a[i+1], a[i])) i++;
         merge (a, lo, mid, i);
         if (i < n) i++;
+        else break;
       }
-      runCounter++;
-      sizeOfLastSubArray = n - lo;
+      if (lo == 0) break; //meaning that it has only merged once, and therefore everything should be sorted
     }
+  }
+
+  public static void insertionSort(Comparable[] a, int lo, int hi) {
+    for (int i = lo; i < hi; i++)
+      for (int j = i; j > lo && !less(a[j-1], a[j]); j--)
+        exch(a, j, j-1);
   }
 
 
